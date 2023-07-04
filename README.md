@@ -4,7 +4,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Blog App ](#-hello-rails-)
+- [📖 Recipe App ](#-hello-rails-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -26,7 +26,7 @@
 
 # 📖 Recipe-app <a name="about-the-project"></a>
 
-The **Recipe-app** is a classic example of a blog website. It is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
+The **Recipe-app** is a classic example of a blog website. It is a fully functional website that will show the list of recipes and empower readers to interact with them by adding trying out the different food recipes.
 
 ## 🛠 Built With <a name="built-with"></a>
 
