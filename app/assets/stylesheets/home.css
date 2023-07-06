@@ -1,0 +1,16 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.homepage h1 {
+  font-size: 30px;
+  color: var(--color2);
+}
+
+.homepage p {
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-size: 17px;
+}

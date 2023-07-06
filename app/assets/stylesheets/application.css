@@ -103,11 +103,7 @@ header a {
 header .logo {
   font-size: 25px;
   text-decoration: none;
-  color: var(--color3);
-}
-
-.logo:hover {
-  color: var(--color3);
+  color: var(--color2);
 }
 
 nav {
@@ -131,4 +127,6 @@ nav > a:hover {
 
 main {
   padding: 50px 30px;
+  max-width: 1000px;
+  margin: auto;
 }
