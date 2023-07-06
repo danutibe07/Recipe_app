@@ -23,6 +23,23 @@ class RecipesController < ApplicationController
     redirect_to @recipe, notice: 'Recipe public status updated.'
   end
 
+  def add_food
+    @food = Food.new
+  end
+
+  def create_food
+    @recipe = Recipe.find(params[:recipe_id])
+    @food = @recipe.foods.new(food_params)
+    @food.user = current_user
+
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash.now[:error] = @food.errors.full_messages
+      render 'foods/new'
+    end
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
@@ -36,8 +53,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    # destroy all foods_recipes
-    @recipe.foods_recipes&.destroy_all
+    @recipe.foods.destroy_all
 
     @recipe.destroy
     redirect_to recipes_path
@@ -47,5 +63,9 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :quantity, :price)
   end
 end

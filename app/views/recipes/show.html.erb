@@ -51,7 +51,7 @@
 
     <div class="recipe-actions">
       <button>Generate shopping list</button>
-      <button>Add ingredient</button>
+      <%= button_to "Add Ingredient", recipe_add_food_path(@recipe), method: :get %>
     </div>
 
     <hr />
