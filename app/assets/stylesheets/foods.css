@@ -67,7 +67,7 @@ table .show-btn {
 
 .food-form form .field input:focus {
   outline: none;
-  border-bottom-color: var(--color3)
+  border-bottom-color: var(--color3);
 }
 
 .food-form form [type="submit"] {
@@ -92,7 +92,6 @@ table .show-btn {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
   font-size: 17px;
 }
 

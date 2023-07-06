@@ -19,7 +19,7 @@ class Ability
     can :toggle_public, Recipe, user_id: user.id
 
     # A user can add and remove their recipe ingredients
-    can [:add_ingredient, :create_ingredient, :remove_ingredient], Recipe, user_id: user.id
+    can %i[add_ingredient create_ingredient remove_ingredient], Recipe, user_id: user.id
 
     # Only a user can delete their recipe
     can :destroy, Recipe, user_id: user.id

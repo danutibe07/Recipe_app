@@ -27,7 +27,7 @@
 
 .recipes-page .recipes-list .recipe {
   border: 1px solid var(--color2);
-  box-shadow: 0px 1px 2px 1px var(--color2);
+  box-shadow: 0 1px 2px 1px var(--color2);
   padding: 20px;
   display: flex;
   align-items: center;
@@ -84,21 +84,21 @@
   resize: none;
 }
 
+.new-recipe-page form .recipe-visibility input {
+  width: 25px;
+  height: 25px;
+}
+
 .new-recipe-page form .field input:focus,
 .new-recipe-page form .field textarea:focus {
   outline: none;
-  border-bottom-color: var(--color3)
+  border-bottom-color: var(--color3);
 }
 
 .new-recipe-page form .recipe-visibility {
   flex-direction: row;
   align-items: center;
   font-size: 20px;
-}
-
-.new-recipe-page form .recipe-visibility input {
-  width: 25px;
-  height: 25px;
 }
 
 .new-recipe-page form [type="submit"] {

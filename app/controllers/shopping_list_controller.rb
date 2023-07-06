@@ -14,6 +14,6 @@ class ShoppingListController < ApplicationController
       @list << food unless recipe_foods.include? food
     end
 
-    @total_food_value = @list.sum { |item| item.price }
+    @total_food_value = @list.sum(&:price)
   end
 end
