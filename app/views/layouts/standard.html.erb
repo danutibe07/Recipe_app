@@ -5,16 +5,22 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'foods', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 </head>
 <body>
   <header>
-    <nav>
-      <!-- Navigation links -->
-      <% if user_signed_in? %>
-      <a href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a>
-      
+    <%= link_to root_path do %>
+      <h1 class="logo">RECIPE APP</h1>
     <% end %>
+    <nav>
+      <%= link_to 'ALL FOODS', foods_path %>
+      <%= link_to 'ALL RECIPES', recipes_path %>
+      <%= link_to 'PUBLIC RECIPES', foods_path %>
+      <%= link_to 'SHOPPING LIST', foods_path %>
+      <% if user_signed_in? %>
+        <a href="<%= destroy_user_session_path %>" data-method="delete">SIGN OUT</a>
+      <% end %>
     </nav>
   </header>
 
