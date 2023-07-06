@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     patch 'toggle_public', on: :member
   end
 
+  resources :shopping_list, only: [:index]
+
   resources :public_recipes, only: [:index]
 end

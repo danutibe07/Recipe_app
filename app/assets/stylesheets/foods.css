@@ -21,7 +21,6 @@
 .foods-page .foods-table {
   margin-top: 40px;
   width: 100%;
-  border: 1px solid var(--color1);
 }
 
 th,

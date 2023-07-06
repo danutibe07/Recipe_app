@@ -130,3 +130,11 @@ main {
   max-width: 1000px;
   margin: auto;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
