@@ -14,7 +14,7 @@
         <%end%>
       </p>
       <div>
-        <% if can?(:update, @recipe) %>
+        <% if can?(:toggle_public, @recipe) %>
           <%= form_with(model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch) do |form| %>
             <% if @recipe.public %>
               <p>This recipe is public</p>
@@ -51,7 +51,10 @@
 
     <div class="recipe-actions">
       <button>Generate shopping list</button>
-      <%= button_to "Add Ingredient", recipe_add_food_path(@recipe), method: :get %>
+
+      <% if can?(:add_food, @recipe) %>
+        <%= button_to "Add Ingredient", recipe_add_food_path(@recipe), method: :get %>
+      <% end %>
     </div>
 
     <hr />
@@ -73,7 +76,11 @@
           <td><%= food.measurement_unit %></td>
           <td><%= food.quantity %></td>
           <td>$<%= food.price %></td>
-          <td><%= button_to "Delete", food, method: :delete, class: "delete-btn" %></td>
+          <td>
+            <% if can?(:destroy, food) %>
+              <%= button_to "Delete", food, method: :delete, class: "delete-btn" %>
+            <% end %>
+          </td>
           <td><%= link_to "Show", food, class: "show-btn" %></td>
         </tr>
       <% end %>

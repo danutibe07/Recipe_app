@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   layout 'standard'
   before_action :authenticate_user!
+  authorize_resource
 
   def index
     @user = current_user
@@ -19,16 +20,23 @@ class RecipesController < ApplicationController
 
   def toggle_public
     @recipe = Recipe.find(params[:id])
+    authorize! :toggle_public, @recipe
+
     @recipe.update(public: !@recipe.public)
     redirect_to @recipe, notice: 'Recipe public status updated.'
   end
 
   def add_food
-    @food = Food.new
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize! :add_food, @recipe
+
+    @food = @recipe.foods.new
   end
 
   def create_food
     @recipe = Recipe.find(params[:recipe_id])
+    authorize! :create_food, @recipe
+
     @food = @recipe.foods.new(food_params)
     @food.user = current_user
 

@@ -6,7 +6,11 @@
   <p><b>Price:</b> $<%= food.price %></p>
   <hr />
   <div class="food-actions">
-    <%= link_to "Edit", edit_food_path(food) %>
-    <%= button_to "Delete", food, method: :delete, class: "delete-btn" %></td>
+    <% if can?(:edit, food) %>
+      <%= link_to "Edit", edit_food_path(food) %>
+    <% end %>
+    <% if can?(:destroy, food) %>
+      <%= button_to "Delete", food, method: :delete, class: "delete-btn" %></td>
+    <% end %>
   </div>
 </div>
