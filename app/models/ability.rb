@@ -7,10 +7,10 @@ class Ability
     return unless user.present?
 
     # Users can read and create recipes
-    can [:read, :create], Recipe
+    can %i[read create], Recipe
 
     # Users can read and create foods
-    can [:read, :create], Food
+    can %i[read create], Food
 
     # A user can update their recipe
     can :update, Recipe, user_id: user.id
@@ -18,14 +18,13 @@ class Ability
     # A user can toggle publicity on their recipe
     can :toggle_public, Recipe, user_id: user.id
 
-    # A user can add a food to his recipe
-    can [:add_food, :create_food], Recipe, user_id: user.id
+    # A user can add and remove their recipe ingredients
+    can [:add_ingredient, :create_ingredient, :remove_ingredient], Recipe, user_id: user.id
 
-    # Only a user can delete his recipe
+    # Only a user can delete their recipe
     can :destroy, Recipe, user_id: user.id
 
     # Only a user can update and delete his food
-    can [:update, :destroy], Food, user_id: user.id
-
+    can %i[update destroy], Food, user_id: user.id
   end
 end

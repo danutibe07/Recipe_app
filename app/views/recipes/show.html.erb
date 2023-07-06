@@ -50,10 +50,10 @@
     </div>
 
     <div class="recipe-actions">
-      <button>Generate shopping list</button>
+      <button>General shopping list</button>
 
-      <% if can?(:add_food, @recipe) %>
-        <%= button_to "Add Ingredient", recipe_add_food_path(@recipe), method: :get %>
+      <% if can?(:add_ingredient, @recipe) %>
+        <%= button_to "Add Ingredient", recipe_add_ingredient_path(@recipe), method: :get %>
       <% end %>
     </div>
 
@@ -77,8 +77,10 @@
           <td><%= food.quantity %></td>
           <td>$<%= food.price %></td>
           <td>
-            <% if can?(:destroy, food) %>
-              <%= button_to "Delete", food, method: :delete, class: "delete-btn" %>
+            <% if can?(:remove_ingredient, @recipe) %>
+              <%= form_with(model: food, url: recipe_remove_ingredient_path({recipe_id: @recipe.id, food_id: food.id}), method: :delete) do |form| %>
+                <%= form.submit 'Remove', class: "delete-btn" %>
+              <% end %>
             <% end %>
           </td>
           <td><%= link_to "Show", food, class: "show-btn" %></td>

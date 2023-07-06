@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :foods
 
   resources :recipes, except: [:update] do
-    get 'add_food', to: 'recipes#add_food'
-    post 'create_food', to: 'recipes#create_food'
+    get 'add_ingredient', to: 'recipes#add_ingredient'
+    put 'create_ingredient', to: 'recipes#create_ingredient'
+    delete 'remove_ingredient', to: 'recipes#remove_ingredient'
     patch 'toggle_public', on: :member
   end
 

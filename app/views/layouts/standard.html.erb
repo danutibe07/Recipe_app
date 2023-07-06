@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'foods', media: 'all', 'data-turbo-track': 'reload' %>
   <%= stylesheet_link_tag 'home', media: 'all', 'data-turbo-track': 'reload' %>
   <%= stylesheet_link_tag 'recipes', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag 'ingredients', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 </head>
 <body>
@@ -16,8 +17,8 @@
       <h1 class="logo">RECIPE APP</h1>
     <% end %>
     <nav>
-      <%= link_to 'ALL FOODS', foods_path %>
-      <%= link_to 'ALL RECIPES', recipes_path %>
+      <%= link_to 'MY FOODS', foods_path %>
+      <%= link_to 'MY RECIPES', recipes_path %>
       <%= link_to 'PUBLIC RECIPES', public_recipes_path %>
       <%= link_to 'SHOPPING LIST', foods_path %>
       <% if user_signed_in? %>

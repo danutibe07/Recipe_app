@@ -26,24 +26,38 @@ class RecipesController < ApplicationController
     redirect_to @recipe, notice: 'Recipe public status updated.'
   end
 
-  def add_food
+  def add_ingredient
+    @foods = current_user.foods
     @recipe = Recipe.find(params[:recipe_id])
-    authorize! :add_food, @recipe
-
-    @food = @recipe.foods.new
+    authorize! :add_ingredient, @recipe
   end
 
-  def create_food
+  def create_ingredient
     @recipe = Recipe.find(params[:recipe_id])
-    authorize! :create_food, @recipe
+    authorize! :create_ingredient, @recipe
 
-    @food = @recipe.foods.new(food_params)
-    @food.user = current_user
+    food = Food.find(params[:food_id])
+    @recipe.foods << food
 
     if @recipe.save
       redirect_to @recipe
     else
-      flash.now[:error] = @food.errors.full_messages
+      flash.now[:error] = @recipe.errors.full_messages
+      render 'foods/new'
+    end
+  end
+
+  def remove_ingredient
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize! :create_ingredient, @recipe
+
+    food = Food.find(params[:food_id])
+    @recipe.foods.delete(food)
+
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash.now[:error] = @recipe.errors.full_messages
       render 'foods/new'
     end
   end
@@ -71,9 +85,5 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-  end
-
-  def food_params
-    params.require(:food).permit(:name, :measurement_unit, :quantity, :price)
   end
 end
