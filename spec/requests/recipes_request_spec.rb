@@ -26,7 +26,7 @@ RSpec.describe 'Recipes Index', type: :request do
     end
 
     it 'include the list of recipe of the user' do
-      expect(response.body).to include("My Recipes")
+      expect(response.body).to include('My Recipes')
     end
   end
 

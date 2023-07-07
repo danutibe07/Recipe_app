@@ -89,7 +89,6 @@ RSpec.feature 'recipes visit show recipe and delete recipe food', type: :feature
     sign_in @user
     visit recipe_path(@recipe)
   end
-
 end
 
 RSpec.feature 'recipes visit show recipe and test buttons redirections', type: :feature do
