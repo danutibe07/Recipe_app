@@ -1,33 +1,34 @@
-<h2 class = 'header-title'> New Recipe </h2>
+<div class="new-recipe-page">
+  <h2> Add a new recipe </h2>
 
-<%= form_with(model: @recipe, url: recipes_path, method: :post ) do |f| %>
+  <%= form_with(model: @recipe, url: recipes_path, method: :post ) do |f| %>
 
-<div class="field mb-3 form">
-    <%= f.label :name, class:'form-label' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
+  <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field mb-3 form">
-    <%= f.label :preparation_time, class:'form-label'  %>
-    <%= f.number_field :preparation_time, step: '0.25', value: 0.25, min: 0.25,class: 'form-control' %>
-  </div>
+    <div class="field">
+      <%= f.label :preparation_time  %>
+      <%= f.number_field :preparation_time, step: '0.25', value: 0.25, min: 0.25,class: 'form-control' %>
+    </div>
 
-  <div class="field mb-3 form">
-    <%= f.label :cooking_time, class:'form-label'  %>
-    <%= f.number_field :cooking_time, step: '0.25', value: 0.25, min: 0.25,class: 'form-control' %>
-  </div>
+    <div class="field">
+      <%= f.label :cooking_time  %>
+      <%= f.number_field :cooking_time, step: '0.25', value: 0.25, min: 0.25,class: 'form-control' %>
+    </div>
 
-  <div class="field mb-3 form">
-    <%= f.label :description, class:'form-label'  %>
-    <%= f.text_area :description, class: 'form-control' %>
-  </div> 
+    <div class="field">
+      <%= f.label :description  %>
+      <%= f.text_area :description %>
+    </div>
 
-  <div class="field mb-3 form">
-    <%= f.label :public, class:'form-check-label'  %>
-   <%= f.check_box :public, checked_value: true, unchecked_value: false, class: 'form-check-input' %>
-  </div>
+    <div class="field recipe-visibility">
+      <%= f.check_box :public, checked_value: true, unchecked_value: false, class: 'form-check-input' %>
+      <%= f.label :public  %>
+    </div>
 
- 
-  <%= f.submit 'Create a recipe', class: 'btn btn-primary mb-3' %>
+    <%= f.submit 'Save', class: 'btn btn-primary mb-3' %>
 
-<%end%>
+  <%end%>
+</div>

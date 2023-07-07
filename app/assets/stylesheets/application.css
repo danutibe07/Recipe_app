@@ -1,3 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  --color1: #5b5757;
+  --color2: #137a94;
+  --color3: #d73a49;
+}
+
 .flash {
   padding: 10px;
   margin-bottom: 10px;
@@ -70,4 +84,60 @@
   width: 400px;
   height: 30px;
   font-size: 16px;
+}
+
+/* Header */
+header {
+  height: 80px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color1);
+}
+
+header a {
+  text-decoration: none;
+  transition: 0.3s all;
+}
+
+header .logo {
+  font-size: 25px;
+  text-decoration: none;
+  color: var(--color2);
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav > a {
+  font-weight: bold;
+  font-size: 15px;
+  color: var(--color1);
+}
+
+nav > a:last-child {
+  color: var(--color3);
+}
+
+nav > a:hover {
+  color: var(--color2);
+}
+
+main {
+  padding: 50px 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }

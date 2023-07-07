@@ -1,21 +1,16 @@
-<table id="foods">
-<div id="<%= dom_id food %>">
-<tr>
-  <th>Name</th>
-  <th>Measurement unit</th>
-  <th>Quantity</th>
-  <th>Unit price</th>
-  <th>Actions</th>
-</tr>
-  <tr id="<%= dom_id food %>">
-    <td >
-    <%= food.name %>
-    </td>
-    <td ><%= food.measurement_unit %></td>
-    <td ><%= food.quantity %></td>
-    <td >$<%= food.price %></td>
-    <td ><%= button_to "Delete", food, method: :delete, class: "btn_delete" %></td>
-    </tr>
-    
-    </div>
-    </table>
+<div class="food-details">
+  <h2><%= food.name %></h2>
+  <hr />
+  <p><b>Measurement unit:</b> <%= food.measurement_unit %></p>
+  <p><b>Quantity:</b> <%= food.quantity %></p>
+  <p><b>Price:</b> $<%= food.price %></p>
+  <hr />
+  <div class="food-actions">
+    <% if can?(:edit, food) %>
+      <%= link_to "Edit", edit_food_path(food) %>
+    <% end %>
+    <% if can?(:destroy, food) %>
+      <%= button_to "Delete", food, method: :delete, class: "delete-btn" %></td>
+    <% end %>
+  </div>
+</div>

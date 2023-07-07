@@ -1,23 +1,20 @@
 Rails.application.routes.draw do
-  get 'general_shopping_list/index'
-  get 'home/index'
+  root 'home#index'
+
   devise_for :users
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Add the following route for signing out
   resources :users, only: [:show]
 
-  resources :foods # Add this line to generate the necessary routes for FoodsController
+  resources :foods
 
   resources :recipes, except: [:update] do
-    resources :foods_recipes, only: [:new, :create, :destroy]
-  end
-  resources :public_recipes, except: [:update]
-  resources :recipes do
+    get 'add_ingredient', to: 'recipes#add_ingredient'
+    put 'create_ingredient', to: 'recipes#create_ingredient'
+    delete 'remove_ingredient', to: 'recipes#remove_ingredient'
     patch 'toggle_public', on: :member
   end
 
-  # Defines the root path route ("/")
-  root "home#index" # Set the home page route to the "index" action of the "home" controller
+  resources :shopping_list, only: [:index]
+
+  resources :public_recipes, only: [:index]
 end

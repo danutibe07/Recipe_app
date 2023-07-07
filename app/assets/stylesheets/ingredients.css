@@ -1,0 +1,18 @@
+.ingredients-page h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ingredients-page table {
+  width: 100%;
+}
+
+.ingredients-page .add-btn {
+  background-color: var(--color2);
+  border: none;
+  padding: 10px 30px;
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}

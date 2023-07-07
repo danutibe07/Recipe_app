@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
+  authorize_resource
 
   def index
     @user = current_user
@@ -18,8 +19,46 @@ class RecipesController < ApplicationController
 
   def toggle_public
     @recipe = Recipe.find(params[:id])
+    authorize! :toggle_public, @recipe
+
     @recipe.update(public: !@recipe.public)
     redirect_to @recipe, notice: 'Recipe public status updated.'
+  end
+
+  def add_ingredient
+    @foods = current_user.foods
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize! :add_ingredient, @recipe
+  end
+
+  def create_ingredient
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize! :create_ingredient, @recipe
+
+    food = Food.find(params[:food_id])
+    @recipe.foods << food
+
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash.now[:error] = @recipe.errors.full_messages
+      render 'foods/new'
+    end
+  end
+
+  def remove_ingredient
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize! :create_ingredient, @recipe
+
+    food = Food.find(params[:food_id])
+    @recipe.foods.delete(food)
+
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash.now[:error] = @recipe.errors.full_messages
+      render 'foods/new'
+    end
   end
 
   def create
@@ -35,8 +74,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    # destroy all foods_recipes
-    @recipe.foods_recipes&.destroy_all
+    @recipe.foods.destroy_all
 
     @recipe.destroy
     redirect_to recipes_path
