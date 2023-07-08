@@ -1,18 +1,18 @@
 database:
-- name: Recipe_app
-    databaseName: Recipe_app
-    user: Recipe_app
+- name: Recipeapp
+    databaseName: Recipeapp
+    user: Recipeapp
 
 services:
  - type: web
-   name: Recipe_app
+   name: Recipeapp
   runtime: ruby
      buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
    envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name:  Recipe_app
+          name:  Recipeapp
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
