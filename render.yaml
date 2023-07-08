@@ -1,6 +1,6 @@
 database:
 - name: Recipeapp
-    databaseName: mysite
+    # databaseName: mysite
     user: Recipeapp
 
 services:
