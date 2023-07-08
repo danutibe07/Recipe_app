@@ -1,0 +1,116 @@
+.foods-page .foods-page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.foods-page .foods-page-top a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background-color: var(--color1);
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: 0.3s all;
+}
+
+.foods-page .foods-page-top a:hover {
+  background-color: var(--color2);
+}
+
+.foods-page .foods-table {
+  margin-top: 40px;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+table .delete-btn,
+table .show-btn {
+  border: none;
+  background-color: var(--color3);
+  padding: 10px 30px;
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+table .show-btn {
+  background-color: var(--color2);
+}
+
+.food-form h2 {
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+
+.food-form form .field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.food-form form .field input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid var(--color2);
+  font-size: 17px;
+}
+
+.food-form form .field input:focus {
+  outline: none;
+  border-bottom-color: var(--color3);
+}
+
+.food-form form [type="submit"] {
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: var(--color3);
+  padding: 10px 30px;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: 0.3s all;
+  float: right;
+  cursor: pointer;
+}
+
+.show-food-page h2 {
+  font-size: 30px;
+  color: var(--color2);
+}
+
+.show-food-page .food-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 17px;
+}
+
+.show-food-page .food-details .food-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.show-food-page .food-details .food-actions button,
+.show-food-page .food-details .food-actions a {
+  border: none;
+  background-color: var(--color2);
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.show-food-page .food-details .food-actions button {
+  background-color: var(--color3);
+}

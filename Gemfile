@@ -5,6 +5,16 @@ ruby '2.7.4'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
+gem 'letter_opener', group: :development
+
+gem 'rspec'
+
+gem 'rspec-rails'
+
+gem 'rails-controller-testing'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.6'
 
@@ -72,3 +82,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'cancancan'
